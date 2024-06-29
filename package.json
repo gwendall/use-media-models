@@ -1,7 +1,6 @@
 {
   "name": "use-media-models",
-  "private": true,
-  "version": "1.0.28",
+  "version": "1.0.0",
   "description": "A toolset to use AI models in React",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
