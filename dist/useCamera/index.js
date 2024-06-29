@@ -12,18 +12,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = useCamera;
+exports.defaultCameraOptions = void 0;
+exports.getVideo = getVideo;
+exports.useCamera = useCamera;
 const react_1 = __importDefault(require("react"));
 const deepmerge_1 = __importDefault(require("deepmerge"));
-const defaultCameraOptions = {
+function getVideo(videoRef) {
+    return (videoRef === null || videoRef === void 0 ? void 0 : videoRef.current) || document.createElement("video");
+}
+exports.defaultCameraOptions = {
     audio: false,
     video: {
         facingMode: "user",
     }
 };
-function getVideo(videoRef) {
-    return (videoRef === null || videoRef === void 0 ? void 0 : videoRef.current) || document.createElement("video");
-}
 function useCamera(videoRef, initialFacingMode = "user") {
     const [videoSize, setVideoSize] = react_1.default.useState({ width: 0, height: 0 });
     const [isCameraStarted, setIsCameraStarted] = react_1.default.useState(false);
@@ -54,14 +56,14 @@ function useCamera(videoRef, initialFacingMode = "user") {
         });
     }
     function startCamera() {
-        return __awaiter(this, arguments, void 0, function* (cameraOptions = defaultCameraOptions) {
+        return __awaiter(this, arguments, void 0, function* (cameraOptions = exports.defaultCameraOptions) {
             stopCamera();
             const stream = yield navigator.mediaDevices
-                .getUserMedia((0, deepmerge_1.default)(defaultCameraOptions, cameraOptions || {}));
+                .getUserMedia((0, deepmerge_1.default)(exports.defaultCameraOptions, cameraOptions || {}));
             return setVideoStream(stream);
         });
     }
-    function switchCamera(cameraOptions = defaultCameraOptions) {
+    function switchCamera(cameraOptions = exports.defaultCameraOptions) {
         const newFacingMode = facingMode === "user" ? "environment" : "user";
         const newCameraOptions = (0, deepmerge_1.default)(cameraOptions, {
             video: {

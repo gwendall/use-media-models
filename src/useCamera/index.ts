@@ -1,23 +1,23 @@
 import React from "react";
 import deepmerge from "deepmerge";
 
-type ElementSize = {
+export type ElementSize = {
     width: number;
     height: number;
 };
 
-const defaultCameraOptions: MediaStreamConstraints = {
+export function getVideo(videoRef?: React.MutableRefObject<HTMLVideoElement | null>) {
+    return videoRef?.current || document.createElement("video");
+}
+
+export const defaultCameraOptions: MediaStreamConstraints = {
     audio: false,
     video: {
         facingMode: "user",
     }
 };
 
-function getVideo(videoRef?: React.MutableRefObject<HTMLVideoElement | null>) {
-    return videoRef?.current || document.createElement("video");
-}
-
-export default function useCamera(videoRef?: React.MutableRefObject<HTMLVideoElement | null>, initialFacingMode: "user" | "environment" = "user") {
+export function useCamera(videoRef?: React.MutableRefObject<HTMLVideoElement | null>, initialFacingMode: "user" | "environment" = "user") {
     const [videoSize, setVideoSize] = React.useState<ElementSize>({ width: 0, height: 0 });
     const [isCameraStarted, setIsCameraStarted] = React.useState<boolean>(false);
     const [facingMode, setFacingMode] = React.useState<"user" | "environment">(initialFacingMode);

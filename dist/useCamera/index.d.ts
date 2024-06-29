@@ -1,9 +1,11 @@
 import React from "react";
-type ElementSize = {
+export type ElementSize = {
     width: number;
     height: number;
 };
-export default function useCamera(videoRef?: React.MutableRefObject<HTMLVideoElement | null>, initialFacingMode?: "user" | "environment"): {
+export declare function getVideo(videoRef?: React.MutableRefObject<HTMLVideoElement | null>): HTMLVideoElement;
+export declare const defaultCameraOptions: MediaStreamConstraints;
+export declare function useCamera(videoRef?: React.MutableRefObject<HTMLVideoElement | null>, initialFacingMode?: "user" | "environment"): {
     startCamera: (cameraOptions?: MediaStreamConstraints) => Promise<{
         stream: MediaStream;
         videoSize: ElementSize;
@@ -17,5 +19,4 @@ export default function useCamera(videoRef?: React.MutableRefObject<HTMLVideoEle
     isCameraStarted: boolean;
     facingMode: "user" | "environment";
 };
-export {};
 //# sourceMappingURL=index.d.ts.map
