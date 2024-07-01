@@ -7,7 +7,7 @@ export type UseVideoModelProps<Model, ModelOptions, ModelResult> = {
     onFrame: (model: Model, video: HTMLVideoElement, time: number) => ModelResult | void | Promise<ModelResult | void>;
     onResults: OnVideoModelResults<ModelResult>;
 };
-export declare function useVideoModel<Model, ModelOptions, ModelResult>({ setModel, modelOptions: _modelOptions, setStream, onReady, onFrame, onResults, }: UseVideoModelProps<Model, ModelOptions, ModelResult>): {
+export type UseVideoModelResult<Model, ModelOptions, ModelResult> = {
     startModel: (p?: {
         stream?: MediaStream;
         modelOptions?: ModelOptions;
@@ -23,4 +23,5 @@ export declare function useVideoModel<Model, ModelOptions, ModelResult>({ setMod
     resetStream: (stream: MediaStream) => void;
     isModelRunning: boolean;
 };
+export declare function useVideoModel<Model, ModelOptions, ModelResult>({ setModel, modelOptions: _modelOptions, setStream, onReady, onFrame, onResults, }: UseVideoModelProps<Model, ModelOptions, ModelResult>): UseVideoModelResult<Model, ModelOptions, ModelResult>;
 //# sourceMappingURL=index.d.ts.map

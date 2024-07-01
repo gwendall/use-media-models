@@ -2,7 +2,7 @@ import deepmerge from "deepmerge";
 import { FaceDetector, FaceDetectorOptions, FaceDetectorResult } from "@mediapipe/tasks-vision";
 import { RunningMode } from "./utils/types";
 import getVisionTasks from "./utils/getVisionTasks";
-import { UseVideoModelProps, useVideoModel } from "../useVideoModel";
+import { UseVideoModelProps, UseVideoModelResult, useVideoModel } from "../useVideoModel";
 
 export type { FaceDetector, FaceDetectorOptions, FaceDetectorResult };
 
@@ -22,6 +22,7 @@ export async function getFaceDetector(options: FaceDetectorOptions = defaultFace
 }
 
 export type UseFaceDetectorProps = UseVideoModelProps<FaceDetector, FaceDetectorOptions, FaceDetectorResult>;
+export type UseFaceDetectorResult = UseVideoModelResult<FaceDetector, FaceDetectorOptions, FaceDetectorResult>;
 
 export function useFaceDetector(props: Partial<UseFaceDetectorProps>) {
     return useVideoModel<FaceDetector, FaceDetectorOptions, FaceDetectorResult>({

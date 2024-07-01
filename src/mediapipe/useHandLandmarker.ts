@@ -1,7 +1,7 @@
 import deepmerge from "deepmerge";
 import { HandLandmarker, HandLandmarkerOptions, HandLandmarkerResult } from "@mediapipe/tasks-vision";
 import { RunningMode } from "./utils/types";
-import { UseVideoModelProps, useVideoModel } from "../useVideoModel";
+import { UseVideoModelProps, UseVideoModelResult, useVideoModel } from "../useVideoModel";
 import getVisionTasks from "./utils/getVisionTasks";
 
 export type { HandLandmarker, HandLandmarkerOptions, HandLandmarkerResult };
@@ -26,6 +26,7 @@ export async function getHandLandmarker(options: HandLandmarkerOptions = {}) {
 }
 
 export type UseHandLandmarkerProps = UseVideoModelProps<HandLandmarker, HandLandmarkerOptions, HandLandmarkerResult>;
+export type UseHandLandmarkerResult = UseVideoModelResult<HandLandmarker, HandLandmarkerOptions, HandLandmarkerResult>;
 
 export function useHandLandmarker(props: Partial<UseHandLandmarkerProps>) {
     return useVideoModel<HandLandmarker, HandLandmarkerOptions, HandLandmarkerResult>({

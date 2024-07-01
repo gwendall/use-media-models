@@ -1,7 +1,7 @@
 import deepmerge from "deepmerge";
 import { GestureRecognizer, GestureRecognizerOptions, GestureRecognizerResult } from "@mediapipe/tasks-vision";
 import { RunningMode } from "./utils/types";
-import { UseVideoModelProps, useVideoModel } from "../useVideoModel";
+import { UseVideoModelProps, UseVideoModelResult, useVideoModel } from "../useVideoModel";
 import getVisionTasks from "./utils/getVisionTasks";
 
 export type { GestureRecognizer, GestureRecognizerOptions, GestureRecognizerResult };
@@ -23,6 +23,7 @@ export async function getGestureRecognizer(options: GestureRecognizerOptions = {
 }
 
 export type UseGestureRecognizerProps = UseVideoModelProps<GestureRecognizer, GestureRecognizerOptions, GestureRecognizerResult>;
+export type UseGestureRecognizerResult = UseVideoModelResult<GestureRecognizer, GestureRecognizerOptions, GestureRecognizerResult>;
 
 export function useGestureRecognizer(props: Partial<UseGestureRecognizerProps>) {
     return useVideoModel<GestureRecognizer, GestureRecognizerOptions, GestureRecognizerResult>({

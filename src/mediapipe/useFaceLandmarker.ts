@@ -3,7 +3,7 @@ import { FaceLandmarker, FaceLandmarkerOptions, FaceLandmarkerResult } from "@me
 import { RunningMode } from "./utils/types";
 import getVisionTasks from "./utils/getVisionTasks";
 import { create } from "zustand";
-import { UseVideoModelProps, useVideoModel } from "../useVideoModel";
+import { UseVideoModelProps, UseVideoModelResult, useVideoModel } from "../useVideoModel";
 
 export type { FaceLandmarker, FaceLandmarkerOptions, FaceLandmarkerResult };
 
@@ -33,6 +33,7 @@ export async function createFaceLandmarker(options: FaceLandmarkerOptions = {}):
 }
 
 export type UseFaceLandmarkerProps = UseVideoModelProps<FaceLandmarker, FaceLandmarkerOptions, FaceLandmarkerResult>;
+export type UseFaceLandmarkerResult = UseVideoModelResult<FaceLandmarker, FaceLandmarkerOptions, FaceLandmarkerResult>;
 
 export function useFaceLandmarker(props: Partial<UseFaceLandmarkerProps>) {
     const faceLandmarker = useModelStore((state) => state.faceLandmarker);

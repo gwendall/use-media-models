@@ -1,6 +1,6 @@
 import deepmerge from "deepmerge";
 import { ImageSegmenter, ImageSegmenterOptions, ImageSegmenterResult } from "@mediapipe/tasks-vision";
-import { UseVideoModelProps, useVideoModel } from "../useVideoModel";
+import { UseVideoModelProps, UseVideoModelResult, useVideoModel } from "../useVideoModel";
 import { RunningMode } from "./utils/types";
 import getVisionTasks from "./utils/getVisionTasks";
 
@@ -24,6 +24,7 @@ export async function getImageSegmenter(options: ImageSegmenterOptions = {}) {
 }
 
 export type UseImageSegmenterProps = UseVideoModelProps<ImageSegmenter, ImageSegmenterOptions, ImageSegmenterResult>;
+export type UseImageSegmenterResult = UseVideoModelResult<ImageSegmenter, ImageSegmenterOptions, ImageSegmenterResult>;
 
 export function useImageSegmenter(props: Partial<UseImageSegmenterProps>) {
     return useVideoModel<ImageSegmenter, ImageSegmenterOptions, ImageSegmenterResult>({

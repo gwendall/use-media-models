@@ -1,31 +1,13 @@
-import {
-    FaceDetectorResult, FaceLandmarkerResult,
-    GestureRecognizerResult, HandLandmarkerResult,
-    ImageSegmenterResult, PoseLandmarkerResult
-} from "@mediapipe/tasks-vision";
-
-import {
-    HolisticResult, UseMediapipeHolisticProps, useMediapipeHolistic
-} from "./useMediapipeHolistic";
-
-import {
-    ObjectronResult, UseMediapipeObjectronProps, useMediapipeObjectron
-} from "./useMediapipeObjectron";
-
-import {
-    PoseResult, UseMediapipePoseProps, useMediapipePose
-} from "./useMediapipePose";
-
-import {
-    SelfieSegmentationResult, UseSelfieSegmenterProps, useSelfieSegmenter
-} from "./useSelfieSegmenter";
-
-import { UseFaceDetectorProps, useFaceDetector } from "./useFaceDetector";
-import { UseFaceLandmarkerProps, useFaceLandmarker } from "./useFaceLandmarker";
-import { UseGestureRecognizerProps, useGestureRecognizer } from "./useGestureRecognizer";
-import { UseHandLandmarkerProps, useHandLandmarker } from "./useHandLandmarker";
-import { UseImageSegmenterProps, useImageSegmenter } from "./useImageSegmenter";
-import { UsePoseLandmarkerProps, usePoseLandmarker } from "./usePoseLandmarker";
+import { UseFaceDetectorProps, UseFaceDetectorResult, useFaceDetector } from "./useFaceDetector";
+import { UseFaceLandmarkerProps, UseFaceLandmarkerResult, useFaceLandmarker } from "./useFaceLandmarker";
+import { UseGestureRecognizerProps, UseGestureRecognizerResult, useGestureRecognizer } from "./useGestureRecognizer";
+import { UseHandLandmarkerProps, UseHandLandmarkerResult, useHandLandmarker } from "./useHandLandmarker";
+import { UseImageSegmenterProps, UseImageSegmenterResult, useImageSegmenter } from "./useImageSegmenter";
+import { UseMediapipeHolisticProps, UseMediapipeHolisticResult, useMediapipeHolistic } from "./useMediapipeHolistic";
+import { UseMediapipeObjectronProps, UseMediapipeObjectronResult, useMediapipeObjectron } from "./useMediapipeObjectron";
+import { UseMediapipePoseProps, UseMediapipePoseResult, useMediapipePose } from "./useMediapipePose";
+import { UsePoseLandmarkerProps, UsePoseLandmarkerResult, usePoseLandmarker } from "./usePoseLandmarker";
+import { UseSelfieSegmenterProps, UseSelfieSegmenterResult, useSelfieSegmenter } from "./useSelfieSegmenter";
 
 // Define the possible model types
 type Model =
@@ -56,16 +38,16 @@ type ModelPropsMap = {
 
 // Map each model to its corresponding result type
 type ModelResultMap = {
-    faceDetector: FaceDetectorResult;
-    faceLandmarker: FaceLandmarkerResult;
-    gestureRecognizer: GestureRecognizerResult;
-    handLandmarker: HandLandmarkerResult;
-    imageSegmenter: ImageSegmenterResult;
-    holistic: HolisticResult;
-    objectron: ObjectronResult;
-    pose: PoseResult;
-    poseLandmarker: PoseLandmarkerResult;
-    selfieSegmenter: SelfieSegmentationResult;
+    faceDetector: UseFaceDetectorResult;
+    faceLandmarker: UseFaceLandmarkerResult;
+    gestureRecognizer: UseGestureRecognizerResult;
+    handLandmarker: UseHandLandmarkerResult;
+    imageSegmenter: UseImageSegmenterResult;
+    holistic: UseMediapipeHolisticResult;
+    objectron: UseMediapipeObjectronResult;
+    pose: UseMediapipePoseResult;
+    poseLandmarker: UsePoseLandmarkerResult;
+    selfieSegmenter: UseSelfieSegmenterResult;
 };
 
 // Map each model to its corresponding hook

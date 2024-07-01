@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { useCamera, useFaceLandmarker } from "use-media-models";
+import { useCamera, useMediapipe } from "use-media-models";
 
 export default function ExamplePage() {
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
   const { startCamera } = useCamera(videoRef);
-  const { startModel, } = useFaceLandmarker({
+  const { startModel } = useMediapipe("faceLandmarker", {
     onResults: (results, stream) => {
       // do something with the results.
       console.log('Got results.', results.faceLandmarks);

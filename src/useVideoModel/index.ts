@@ -15,14 +15,7 @@ export type UseVideoModelProps<Model, ModelOptions, ModelResult> = {
     onResults: OnVideoModelResults<ModelResult>;
 };
 
-export function useVideoModel<Model, ModelOptions, ModelResult>({
-    setModel,
-    modelOptions: _modelOptions,
-    setStream,
-    onReady,
-    onFrame,
-    onResults,
-}: UseVideoModelProps<Model, ModelOptions, ModelResult>): {
+export type UseVideoModelResult<Model, ModelOptions, ModelResult> = {
     startModel: (p?: {
         stream?: MediaStream;
         modelOptions?: ModelOptions;
@@ -37,7 +30,16 @@ export function useVideoModel<Model, ModelOptions, ModelResult>({
     setOptions: (options: ModelOptions) => void,
     resetStream: (stream: MediaStream) => void,
     isModelRunning: boolean,
-} {
+};
+
+export function useVideoModel<Model, ModelOptions, ModelResult>({
+    setModel,
+    modelOptions: _modelOptions,
+    setStream,
+    onReady,
+    onFrame,
+    onResults,
+}: UseVideoModelProps<Model, ModelOptions, ModelResult>): UseVideoModelResult<Model, ModelOptions, ModelResult> {
     const videoRef = React.useRef<HTMLVideoElement | null>(null);
     const modelRef = React.useRef<Model>();
     const [isModelRunning, setIsModelRunning] = React.useState<boolean>(false);

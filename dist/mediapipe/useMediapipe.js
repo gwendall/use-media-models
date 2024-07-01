@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useMediapipe = useMediapipe;
-const useMediapipeHolistic_1 = require("./useMediapipeHolistic");
-const useMediapipeObjectron_1 = require("./useMediapipeObjectron");
-const useMediapipePose_1 = require("./useMediapipePose");
-const useSelfieSegmenter_1 = require("./useSelfieSegmenter");
 const useFaceDetector_1 = require("./useFaceDetector");
 const useFaceLandmarker_1 = require("./useFaceLandmarker");
 const useGestureRecognizer_1 = require("./useGestureRecognizer");
 const useHandLandmarker_1 = require("./useHandLandmarker");
 const useImageSegmenter_1 = require("./useImageSegmenter");
+const useMediapipeHolistic_1 = require("./useMediapipeHolistic");
+const useMediapipeObjectron_1 = require("./useMediapipeObjectron");
+const useMediapipePose_1 = require("./useMediapipePose");
 const usePoseLandmarker_1 = require("./usePoseLandmarker");
+const useSelfieSegmenter_1 = require("./useSelfieSegmenter");
 // Map each model to its corresponding hook
 const modelMap = {
     faceDetector: useFaceDetector_1.useFaceDetector,

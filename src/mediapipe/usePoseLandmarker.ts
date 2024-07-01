@@ -1,6 +1,6 @@
 import deepmerge from "deepmerge";
 import { PoseLandmarker, PoseLandmarkerOptions, PoseLandmarkerResult } from "@mediapipe/tasks-vision";
-import { UseVideoModelProps, useVideoModel } from "../useVideoModel";
+import { UseVideoModelProps, UseVideoModelResult, useVideoModel } from "../useVideoModel";
 import { RunningMode } from "./utils/types";
 import getVisionTasks from "./utils/getVisionTasks";
 
@@ -27,6 +27,7 @@ export async function getPoseLandmarker(options: PoseLandmarkerOptions = {}) {
 }
 
 export type UsePoseLandmarkerProps = UseVideoModelProps<PoseLandmarker, PoseLandmarkerOptions, PoseLandmarkerResult>;
+export type UsePoseLandmarkerResult = UseVideoModelResult<PoseLandmarker, PoseLandmarkerOptions, PoseLandmarkerResult>;
 
 export function usePoseLandmarker(props: Partial<UsePoseLandmarkerProps>) {
     return useVideoModel<PoseLandmarker, PoseLandmarkerOptions, PoseLandmarkerResult>({

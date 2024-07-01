@@ -1,6 +1,6 @@
 import deepmerge from "deepmerge";
 import { Holistic, InputImage, Options as HolisticOptions, Results as HolisticResult } from "@mediapipe/holistic";
-import { UseVideoModelProps, useVideoModel } from "../useVideoModel";
+import { UseVideoModelProps, UseVideoModelResult, useVideoModel } from "../useVideoModel";
 
 export type { Holistic, HolisticOptions, HolisticResult };
 
@@ -25,6 +25,7 @@ function getHolistic(options: HolisticOptions = defaultHolisticOptions) {
 }
 
 export type UseMediapipeHolisticProps = UseVideoModelProps<Holistic, HolisticOptions, HolisticResult>;
+export type UseMediapipeHolisticResult = UseVideoModelResult<Holistic, HolisticOptions, HolisticResult>;
 
 export function useMediapipeHolistic(props: Partial<UseMediapipeHolisticProps>) {
     return useVideoModel<Holistic, HolisticOptions, HolisticResult>({

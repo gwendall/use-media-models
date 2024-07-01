@@ -1,6 +1,6 @@
 import deepmerge from "deepmerge";
 import { SelfieSegmentation, InputImage, Options as SelfieSegmentationOptions, Results as SelfieSegmentationResult } from "@mediapipe/selfie_segmentation";
-import { OnVideoModelResults, UseVideoModelProps, useVideoModel } from "../useVideoModel";
+import { OnVideoModelResults, UseVideoModelProps, UseVideoModelResult, useVideoModel } from "../useVideoModel";
 
 export type { SelfieSegmentation, SelfieSegmentationOptions, SelfieSegmentationResult };
 
@@ -20,6 +20,7 @@ function getSelfieSegmenter(options: SelfieSegmentationOptions = defaultSelfieSe
 }
 
 export type UseSelfieSegmenterProps = UseVideoModelProps<SelfieSegmentation, SelfieSegmentationOptions, SelfieSegmentationResult>;
+export type UseSelfieSegmenterResult = UseVideoModelResult<SelfieSegmentation, SelfieSegmentationOptions, SelfieSegmentationResult>;
 
 export function useSelfieSegmenter(props: Partial<UseSelfieSegmenterProps>) {
     return useVideoModel<SelfieSegmentation, SelfieSegmentationOptions, SelfieSegmentationResult>({
