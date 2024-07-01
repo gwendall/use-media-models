@@ -3,7 +3,7 @@ A toolset to use AI media models in React.
 ## Install
 `yarn add use-media-models` or `npm install use-media-models --save`.
 
-## Use a model (example: useFaceLandmarker)
+## Use a model
 
 ### useMediapipe
 ```typescript
