@@ -34,10 +34,6 @@ function getFaceDetector() {
         return faceDetector;
     });
 }
-function useFaceDetector({ onResults, }) {
-    return (0, useVideoModel_1.useVideoModel)({
-        setModel: (options = exports.defaultFaceDetectorOptions) => getFaceDetector(options),
-        onFrame: (model, video, time) => model.detectForVideo(video, time),
-        onResults,
-    });
+function useFaceDetector(props) {
+    return (0, useVideoModel_1.useVideoModel)(Object.assign(Object.assign({}, props), { setModel: (options = exports.defaultFaceDetectorOptions) => getFaceDetector(options), onFrame: (model, video, time) => model.detectForVideo(video, time) }));
 }

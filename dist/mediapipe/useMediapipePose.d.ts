@@ -1,8 +1,8 @@
 import { Pose, Options as PoseOptions, Results as PoseResult } from "@mediapipe/pose";
+import { UseVideoModelProps } from "../useVideoModel";
 export type { Pose, PoseOptions, PoseResult };
-export declare function useMediapipePose({ onResults, }: {
-    onResults: (result: PoseResult, stream?: MediaStream | null) => void;
-}): {
+export type UseMediapipePoseProps = UseVideoModelProps<Pose, PoseOptions, PoseResult>;
+export declare function useMediapipePose(props: Partial<UseMediapipePoseProps>): {
     startModel: (p?: {
         stream?: MediaStream;
         modelOptions?: PoseOptions | undefined;

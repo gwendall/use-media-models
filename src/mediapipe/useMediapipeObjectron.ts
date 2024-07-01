@@ -1,6 +1,6 @@
 import deepmerge from "deepmerge";
 import { Objectron, InputImage, Options as ObjectronOptions, Results as ObjectronResult } from "@mediapipe/objectron";
-import { useVideoModel } from "../useVideoModel";
+import { UseVideoModelProps, useVideoModel } from "../useVideoModel";
 
 export type { Objectron, ObjectronOptions, ObjectronResult };
 
@@ -26,15 +26,13 @@ function getMediapipeObjectron(options: ObjectronOptions = defaultObjectronOptio
     return objectron;
 }
 
-export function useMediapipeObjectron({
-    onResults,
-}: {
-    onResults: (result: ObjectronResult, stream?: MediaStream | null) => void;
-}) {
+export type UseMediapipeObjectronProps = UseVideoModelProps<Objectron, ObjectronOptions, ObjectronResult>;
+
+export function useMediapipeObjectron(props: Partial<UseMediapipeObjectronProps>) {
     return useVideoModel<Objectron, ObjectronOptions, ObjectronResult>({
+        ...props as UseMediapipeObjectronProps,
         setModel: (options = defaultObjectronOptions) => getMediapipeObjectron(options),
-        onReady: (model: Objectron, stream?: MediaStream) => model.onResults((res) => onResults?.(res, stream)),
+        onReady: (model: Objectron, stream?: MediaStream) => model.onResults((res) => props?.onResults?.(res, stream)),
         onFrame: (model: Objectron, video: HTMLVideoElement) => model.send({ image: video as InputImage }),
-        onResults,
     });
 }

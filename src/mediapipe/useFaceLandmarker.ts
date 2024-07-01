@@ -34,12 +34,6 @@ export async function createFaceLandmarker(options: FaceLandmarkerOptions = {}):
 
 export type UseFaceLandmarkerProps = UseVideoModelProps<FaceLandmarker, FaceLandmarkerOptions, FaceLandmarkerResult>;
 
-const useModelStore = create<{
-    faceLandmarker: FaceLandmarker | null;
-}>(() => ({
-    faceLandmarker: null,
-}));
-
 export function useFaceLandmarker(props: Partial<UseFaceLandmarkerProps>) {
     const faceLandmarker = useModelStore((state) => state.faceLandmarker);
     return useVideoModel<FaceLandmarker, FaceLandmarkerOptions, FaceLandmarkerResult>({
@@ -54,3 +48,9 @@ export function useFaceLandmarker(props: Partial<UseFaceLandmarkerProps>) {
         onFrame: (model: FaceLandmarker, video: HTMLVideoElement, time: number) => model.detectForVideo(video, time),
     } as UseFaceLandmarkerProps);
 }
+
+const useModelStore = create<{
+    faceLandmarker: FaceLandmarker | null;
+}>(() => ({
+    faceLandmarker: null,
+}));

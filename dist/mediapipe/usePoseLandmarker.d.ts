@@ -1,10 +1,10 @@
 import { PoseLandmarker, PoseLandmarkerOptions, PoseLandmarkerResult } from "@mediapipe/tasks-vision";
+import { UseVideoModelProps } from "../useVideoModel";
 export type { PoseLandmarker, PoseLandmarkerOptions, PoseLandmarkerResult };
 export declare const defaultPoseLandmarkerOptions: PoseLandmarkerOptions;
 export declare function getPoseLandmarker(options?: PoseLandmarkerOptions): Promise<PoseLandmarker>;
-export declare function usePoseLandmarker({ onResults, }: {
-    onResults: (result: PoseLandmarkerResult, stream?: MediaStream | null) => void;
-}): {
+export type UsePoseLandmarkerProps = UseVideoModelProps<PoseLandmarker, PoseLandmarkerOptions, PoseLandmarkerResult>;
+export declare function usePoseLandmarker(props: Partial<UsePoseLandmarkerProps>): {
     startModel: (p?: {
         stream?: MediaStream;
         modelOptions?: PoseLandmarkerOptions | undefined;

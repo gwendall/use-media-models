@@ -38,10 +38,6 @@ function getHandLandmarker() {
         return handLandmarker;
     });
 }
-function useHandLandmarker({ onResults, }) {
-    return (0, useVideoModel_1.useVideoModel)({
-        setModel: (options = exports.defaultHandLandmarkerOptions) => getHandLandmarker(options),
-        onFrame: (model, video, time) => model.detectForVideo(video, time),
-        onResults,
-    });
+function useHandLandmarker(props) {
+    return (0, useVideoModel_1.useVideoModel)(Object.assign(Object.assign({}, props), { setModel: (options = exports.defaultHandLandmarkerOptions) => getHandLandmarker(options), onFrame: (model, video, time) => model.detectForVideo(video, time) }));
 }

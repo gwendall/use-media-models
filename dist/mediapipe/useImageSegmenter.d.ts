@@ -1,10 +1,10 @@
 import { ImageSegmenter, ImageSegmenterOptions, ImageSegmenterResult } from "@mediapipe/tasks-vision";
+import { UseVideoModelProps } from "../useVideoModel";
 export type { ImageSegmenter, ImageSegmenterOptions, ImageSegmenterResult };
 export declare const defaultImageSegmenterOptions: ImageSegmenterOptions;
 export declare function getImageSegmenter(options?: ImageSegmenterOptions): Promise<ImageSegmenter>;
-export declare function useImageSegmenter({ onResults, }: {
-    onResults: (result: ImageSegmenterResult, stream?: MediaStream | null) => void;
-}): {
+export type UseImageSegmenterProps = UseVideoModelProps<ImageSegmenter, ImageSegmenterOptions, ImageSegmenterResult>;
+export declare function useImageSegmenter(props: Partial<UseImageSegmenterProps>): {
     startModel: (p?: {
         stream?: MediaStream;
         modelOptions?: ImageSegmenterOptions | undefined;

@@ -12,4 +12,5 @@ export * from './mediapipe/useGestureRecognizer';
 export * from './mediapipe/useHandLandmarker';
 export * from './mediapipe/useImageSegmenter';
 export * from './mediapipe/useSelfieSegmenter';
+export * from './mediapipe/useMediapipe';
 //# sourceMappingURL=index.d.ts.map

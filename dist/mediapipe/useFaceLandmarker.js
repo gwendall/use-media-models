@@ -46,9 +46,6 @@ function createFaceLandmarker() {
         }
     });
 }
-const useModelStore = (0, zustand_1.create)(() => ({
-    faceLandmarker: null,
-}));
 function useFaceLandmarker(props) {
     const faceLandmarker = useModelStore((state) => state.faceLandmarker);
     return (0, useVideoModel_1.useVideoModel)(Object.assign(Object.assign({}, props), { setModel: (options = exports.defaultFaceLandmarkerOptions) => {
@@ -60,3 +57,6 @@ function useFaceLandmarker(props) {
             }
         }, onFrame: (model, video, time) => model.detectForVideo(video, time) }));
 }
+const useModelStore = (0, zustand_1.create)(() => ({
+    faceLandmarker: null,
+}));

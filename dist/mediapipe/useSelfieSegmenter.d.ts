@@ -2,7 +2,7 @@ import { SelfieSegmentation, Options as SelfieSegmentationOptions, Results as Se
 import { UseVideoModelProps } from "../useVideoModel";
 export type { SelfieSegmentation, SelfieSegmentationOptions, SelfieSegmentationResult };
 export type UseSelfieSegmenterProps = UseVideoModelProps<SelfieSegmentation, SelfieSegmentationOptions, SelfieSegmentationResult>;
-export declare function useSelfieSegmenter({ onResults, ...props }: Partial<UseSelfieSegmenterProps>): {
+export declare function useSelfieSegmenter(props: Partial<UseSelfieSegmenterProps>): {
     startModel: (p?: {
         stream?: MediaStream;
         modelOptions?: SelfieSegmentationOptions | undefined;

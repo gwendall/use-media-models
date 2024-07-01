@@ -35,10 +35,6 @@ function getGestureRecognizer() {
         return gestureRecognizer;
     });
 }
-function useGestureRecognizer({ onResults, }) {
-    return (0, useVideoModel_1.useVideoModel)({
-        setModel: (options = exports.defaultGestureRecognizerOptions) => getGestureRecognizer(options),
-        onFrame: (model, video, time) => model.recognizeForVideo(video, time),
-        onResults,
-    });
+function useGestureRecognizer(props) {
+    return (0, useVideoModel_1.useVideoModel)(Object.assign(Object.assign({}, props), { setModel: (options = exports.defaultGestureRecognizerOptions) => getGestureRecognizer(options), onFrame: (model, video, time) => model.recognizeForVideo(video, time) }));
 }

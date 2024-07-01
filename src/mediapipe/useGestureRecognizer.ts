@@ -1,7 +1,7 @@
 import deepmerge from "deepmerge";
 import { GestureRecognizer, GestureRecognizerOptions, GestureRecognizerResult } from "@mediapipe/tasks-vision";
 import { RunningMode } from "./utils/types";
-import { useVideoModel } from "../useVideoModel";
+import { UseVideoModelProps, useVideoModel } from "../useVideoModel";
 import getVisionTasks from "./utils/getVisionTasks";
 
 export type { GestureRecognizer, GestureRecognizerOptions, GestureRecognizerResult };
@@ -22,14 +22,12 @@ export async function getGestureRecognizer(options: GestureRecognizerOptions = {
     return gestureRecognizer;
 }
 
-export function useGestureRecognizer({
-    onResults,
-}: {
-    onResults: (result: GestureRecognizerResult, stream?: MediaStream | null) => void;
-}) {
+export type UseGestureRecognizerProps = UseVideoModelProps<GestureRecognizer, GestureRecognizerOptions, GestureRecognizerResult>;
+
+export function useGestureRecognizer(props: Partial<UseGestureRecognizerProps>) {
     return useVideoModel<GestureRecognizer, GestureRecognizerOptions, GestureRecognizerResult>({
+        ...props as UseGestureRecognizerProps,
         setModel: (options = defaultGestureRecognizerOptions) => getGestureRecognizer(options),
         onFrame: (model: GestureRecognizer, video: HTMLVideoElement, time: number) => model.recognizeForVideo(video, time),
-        onResults,
     });
 }

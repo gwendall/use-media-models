@@ -1,8 +1,8 @@
 import { Objectron, Options as ObjectronOptions, Results as ObjectronResult } from "@mediapipe/objectron";
+import { UseVideoModelProps } from "../useVideoModel";
 export type { Objectron, ObjectronOptions, ObjectronResult };
-export declare function useMediapipeObjectron({ onResults, }: {
-    onResults: (result: ObjectronResult, stream?: MediaStream | null) => void;
-}): {
+export type UseMediapipeObjectronProps = UseVideoModelProps<Objectron, ObjectronOptions, ObjectronResult>;
+export declare function useMediapipeObjectron(props: Partial<UseMediapipeObjectronProps>): {
     startModel: (p?: {
         stream?: MediaStream;
         modelOptions?: ObjectronOptions | undefined;

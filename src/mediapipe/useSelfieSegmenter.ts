@@ -21,15 +21,12 @@ function getSelfieSegmenter(options: SelfieSegmentationOptions = defaultSelfieSe
 
 export type UseSelfieSegmenterProps = UseVideoModelProps<SelfieSegmentation, SelfieSegmentationOptions, SelfieSegmentationResult>;
 
-export function useSelfieSegmenter({
-    onResults,
-    ...props
-}: Partial<UseSelfieSegmenterProps>) {
+export function useSelfieSegmenter(props: Partial<UseSelfieSegmenterProps>) {
     return useVideoModel<SelfieSegmentation, SelfieSegmentationOptions, SelfieSegmentationResult>({
         ...props,
         setModel: (options = defaultSelfieSegmentationOptions) => getSelfieSegmenter(options),
-        onReady: (model: SelfieSegmentation, stream?: MediaStream) => model.onResults((res) => onResults?.(res, stream)),
+        onReady: (model: SelfieSegmentation, stream?: MediaStream) => model.onResults((res) => props?.onResults?.(res, stream)),
         onFrame: (model: SelfieSegmentation, video: HTMLVideoElement) => model.send({ image: video as InputImage }),
-        onResults: onResults as OnVideoModelResults<SelfieSegmentationResult>,
+        onResults: props?.onResults as OnVideoModelResults<SelfieSegmentationResult>,
     });
 }

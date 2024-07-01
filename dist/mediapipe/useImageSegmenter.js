@@ -36,10 +36,6 @@ function getImageSegmenter() {
         return imageSegmenter;
     });
 }
-function useImageSegmenter({ onResults, }) {
-    return (0, useVideoModel_1.useVideoModel)({
-        setModel: (options = exports.defaultImageSegmenterOptions) => getImageSegmenter(options),
-        onFrame: (model, video, time) => model.segmentForVideo(video, time),
-        onResults,
-    });
+function useImageSegmenter(props) {
+    return (0, useVideoModel_1.useVideoModel)(Object.assign(Object.assign({}, props), { setModel: (options = exports.defaultImageSegmenterOptions) => getImageSegmenter(options), onFrame: (model, video, time) => model.segmentForVideo(video, time) }));
 }

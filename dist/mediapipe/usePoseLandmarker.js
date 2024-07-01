@@ -39,10 +39,6 @@ function getPoseLandmarker() {
         return poseLandmarker;
     });
 }
-function usePoseLandmarker({ onResults, }) {
-    return (0, useVideoModel_1.useVideoModel)({
-        setModel: (options = exports.defaultPoseLandmarkerOptions) => getPoseLandmarker(options),
-        onFrame: (model, video, time) => model.detectForVideo(video, time),
-        onResults,
-    });
+function usePoseLandmarker(props) {
+    return (0, useVideoModel_1.useVideoModel)(Object.assign(Object.assign({}, props), { setModel: (options = exports.defaultPoseLandmarkerOptions) => getPoseLandmarker(options), onFrame: (model, video, time) => model.detectForVideo(video, time) }));
 }

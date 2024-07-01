@@ -24,11 +24,6 @@ function getMediapipePose(options = defaultPoseOptions) {
     pose.setOptions(poseOptions);
     return pose;
 }
-function useMediapipePose({ onResults, }) {
-    return (0, useVideoModel_1.useVideoModel)({
-        setModel: (options = defaultPoseOptions) => getMediapipePose(options),
-        onReady: (model, stream) => model.onResults((res) => onResults === null || onResults === void 0 ? void 0 : onResults(res, stream)),
-        onFrame: (model, video) => model.send({ image: video }),
-        onResults,
-    });
+function useMediapipePose(props) {
+    return (0, useVideoModel_1.useVideoModel)(Object.assign(Object.assign({}, props), { setModel: (options = defaultPoseOptions) => getMediapipePose(options), onReady: (model, stream) => model.onResults((res) => { var _a; return (_a = props === null || props === void 0 ? void 0 : props.onResults) === null || _a === void 0 ? void 0 : _a.call(props, res, stream); }), onFrame: (model, video) => model.send({ image: video }) }));
 }

@@ -28,3 +28,4 @@ __exportStar(require("./mediapipe/useGestureRecognizer"), exports);
 __exportStar(require("./mediapipe/useHandLandmarker"), exports);
 __exportStar(require("./mediapipe/useImageSegmenter"), exports);
 __exportStar(require("./mediapipe/useSelfieSegmenter"), exports);
+__exportStar(require("./mediapipe/useMediapipe"), exports);

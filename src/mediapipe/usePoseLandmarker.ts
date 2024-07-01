@@ -1,6 +1,6 @@
 import deepmerge from "deepmerge";
 import { PoseLandmarker, PoseLandmarkerOptions, PoseLandmarkerResult } from "@mediapipe/tasks-vision";
-import { useVideoModel } from "../useVideoModel";
+import { UseVideoModelProps, useVideoModel } from "../useVideoModel";
 import { RunningMode } from "./utils/types";
 import getVisionTasks from "./utils/getVisionTasks";
 
@@ -26,14 +26,12 @@ export async function getPoseLandmarker(options: PoseLandmarkerOptions = {}) {
     return poseLandmarker;
 }
 
-export function usePoseLandmarker({
-    onResults,
-}: {
-    onResults: (result: PoseLandmarkerResult, stream?: MediaStream | null) => void;
-}) {
+export type UsePoseLandmarkerProps = UseVideoModelProps<PoseLandmarker, PoseLandmarkerOptions, PoseLandmarkerResult>;
+
+export function usePoseLandmarker(props: Partial<UsePoseLandmarkerProps>) {
     return useVideoModel<PoseLandmarker, PoseLandmarkerOptions, PoseLandmarkerResult>({
+        ...props as UsePoseLandmarkerProps,
         setModel: (options = defaultPoseLandmarkerOptions) => getPoseLandmarker(options),
         onFrame: (model: PoseLandmarker, video: HTMLVideoElement, time: number) => model.detectForVideo(video, time),
-        onResults,
     });
 }

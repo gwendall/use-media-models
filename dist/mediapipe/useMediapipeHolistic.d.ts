@@ -1,8 +1,8 @@
 import { Holistic, Options as HolisticOptions, Results as HolisticResult } from "@mediapipe/holistic";
+import { UseVideoModelProps } from "../useVideoModel";
 export type { Holistic, HolisticOptions, HolisticResult };
-export declare function useMediapipeHolistic({ onResults, }: {
-    onResults: (result: HolisticResult, stream?: MediaStream | null) => void;
-}): {
+export type UseMediapipeHolisticProps = UseVideoModelProps<Holistic, HolisticOptions, HolisticResult>;
+export declare function useMediapipeHolistic(props: Partial<UseMediapipeHolisticProps>): {
     startModel: (p?: {
         stream?: MediaStream;
         modelOptions?: HolisticOptions | undefined;

@@ -1,10 +1,10 @@
 import { FaceDetector, FaceDetectorOptions, FaceDetectorResult } from "@mediapipe/tasks-vision";
+import { UseVideoModelProps } from "../useVideoModel";
 export type { FaceDetector, FaceDetectorOptions, FaceDetectorResult };
 export declare const defaultFaceDetectorOptions: FaceDetectorOptions;
 export declare function getFaceDetector(options?: FaceDetectorOptions): Promise<FaceDetector>;
-export declare function useFaceDetector({ onResults, }: {
-    onResults: (result: FaceDetectorResult, stream?: MediaStream | null) => void;
-}): {
+export type UseFaceDetectorProps = UseVideoModelProps<FaceDetector, FaceDetectorOptions, FaceDetectorResult>;
+export declare function useFaceDetector(props: Partial<UseFaceDetectorProps>): {
     startModel: (p?: {
         stream?: MediaStream;
         modelOptions?: FaceDetectorOptions | undefined;

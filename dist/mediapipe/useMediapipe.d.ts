@@ -1,0 +1,41 @@
+import { FaceDetectorResult, FaceLandmarkerResult, GestureRecognizerResult, HandLandmarkerResult, ImageSegmenterResult, PoseLandmarkerResult } from "@mediapipe/tasks-vision";
+import { HolisticResult, UseMediapipeHolisticProps } from "./useMediapipeHolistic";
+import { ObjectronResult, UseMediapipeObjectronProps } from "./useMediapipeObjectron";
+import { PoseResult, UseMediapipePoseProps } from "./useMediapipePose";
+import { SelfieSegmentationResult, UseSelfieSegmenterProps } from "./useSelfieSegmenter";
+import { UseFaceDetectorProps } from "./useFaceDetector";
+import { UseFaceLandmarkerProps } from "./useFaceLandmarker";
+import { UseGestureRecognizerProps } from "./useGestureRecognizer";
+import { UseHandLandmarkerProps } from "./useHandLandmarker";
+import { UseImageSegmenterProps } from "./useImageSegmenter";
+import { UsePoseLandmarkerProps } from "./usePoseLandmarker";
+type Model = "faceDetector" | "faceLandmarker" | "gestureRecognizer" | "handLandmarker" | "imageSegmenter" | "holistic" | "objectron" | "pose" | "poseLandmarker" | "selfieSegmenter";
+type ModelPropsMap = {
+    faceDetector: UseFaceDetectorProps;
+    faceLandmarker: UseFaceLandmarkerProps;
+    gestureRecognizer: UseGestureRecognizerProps;
+    handLandmarker: UseHandLandmarkerProps;
+    imageSegmenter: UseImageSegmenterProps;
+    holistic: UseMediapipeHolisticProps;
+    objectron: UseMediapipeObjectronProps;
+    pose: UseMediapipePoseProps;
+    poseLandmarker: UsePoseLandmarkerProps;
+    selfieSegmenter: UseSelfieSegmenterProps;
+};
+type ModelResultMap = {
+    faceDetector: FaceDetectorResult;
+    faceLandmarker: FaceLandmarkerResult;
+    gestureRecognizer: GestureRecognizerResult;
+    handLandmarker: HandLandmarkerResult;
+    imageSegmenter: ImageSegmenterResult;
+    holistic: HolisticResult;
+    objectron: ObjectronResult;
+    pose: PoseResult;
+    poseLandmarker: PoseLandmarkerResult;
+    selfieSegmenter: SelfieSegmentationResult;
+};
+type ModelProps<T extends Model> = T extends keyof ModelPropsMap ? ModelPropsMap[T] : never;
+type ModelResult<T extends Model> = T extends keyof ModelResultMap ? ModelResultMap[T] : never;
+export declare function useMediapipe<T extends Model>(model: T, modelProps: Partial<ModelProps<T>>): ModelResult<T>;
+export {};
+//# sourceMappingURL=useMediapipe.d.ts.map

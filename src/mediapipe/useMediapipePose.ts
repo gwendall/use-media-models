@@ -1,6 +1,6 @@
 import deepmerge from "deepmerge";
 import { Pose, InputImage, Options as PoseOptions, Results as PoseResult } from "@mediapipe/pose";
-import { useVideoModel } from "../useVideoModel";
+import { UseVideoModelProps, useVideoModel } from "../useVideoModel";
 
 export type { Pose, PoseOptions, PoseResult };
 
@@ -24,15 +24,13 @@ function getMediapipePose(options: PoseOptions = defaultPoseOptions) {
     return pose;
 }
 
-export function useMediapipePose({
-    onResults,
-}: {
-    onResults: (result: PoseResult, stream?: MediaStream | null) => void;
-}) {
+export type UseMediapipePoseProps = UseVideoModelProps<Pose, PoseOptions, PoseResult>;
+
+export function useMediapipePose(props: Partial<UseMediapipePoseProps>) {
     return useVideoModel<Pose, PoseOptions, PoseResult>({
+        ...props as UseMediapipePoseProps,
         setModel: (options = defaultPoseOptions) => getMediapipePose(options),
-        onReady: (model: Pose, stream?: MediaStream) => model.onResults((res) => onResults?.(res, stream)),
+        onReady: (model: Pose, stream?: MediaStream) => model.onResults((res) => props?.onResults?.(res, stream)),
         onFrame: (model: Pose, video: HTMLVideoElement) => model.send({ image: video as InputImage }),
-        onResults,
     });
 }

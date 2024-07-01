@@ -1,5 +1,6 @@
 import { GestureRecognizer, GestureRecognizerOptions, GestureRecognizerResult } from "@mediapipe/tasks-vision";
 import { RunningMode } from "./utils/types";
+import { UseVideoModelProps } from "../useVideoModel";
 export type { GestureRecognizer, GestureRecognizerOptions, GestureRecognizerResult };
 export declare const defaultGestureRecognizerOptions: {
     baseOptions: {
@@ -10,9 +11,8 @@ export declare const defaultGestureRecognizerOptions: {
     numHands: number;
 };
 export declare function getGestureRecognizer(options?: GestureRecognizerOptions): Promise<GestureRecognizer>;
-export declare function useGestureRecognizer({ onResults, }: {
-    onResults: (result: GestureRecognizerResult, stream?: MediaStream | null) => void;
-}): {
+export type UseGestureRecognizerProps = UseVideoModelProps<GestureRecognizer, GestureRecognizerOptions, GestureRecognizerResult>;
+export declare function useGestureRecognizer(props: Partial<UseGestureRecognizerProps>): {
     startModel: (p?: {
         stream?: MediaStream;
         modelOptions?: GestureRecognizerOptions | undefined;
